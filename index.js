@@ -14,7 +14,9 @@ const timeText = document.querySelector(".time"),
   btnDragon = document.querySelector(".btn-dragon");
 
 start.addEventListener("click", () => handleStart());
-checkWord.addEventListener("click", () => handleCheck());
+checkWord.addEventListener("click", () =>
+  input.value ? handleCheck() : alert("không được spam kiểm tra đáp án")
+);
 btnDragon.addEventListener("click", () => handleDragon());
 let index = 0;
 // start
