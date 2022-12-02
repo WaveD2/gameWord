@@ -1,3 +1,57 @@
+(function () {
+  var canvas = document.querySelector(".canvas");
+  console.log(canvas);
+  var ctx = canvas.getContext("2d");
+  var WIDTH = 320;
+  var HEIGHT = 320;
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
+  clearCanvas();
+
+  var particles = [];
+  for (var i = 0; i < WIDTH; i++) {
+    particles.push({
+      x: Math.random() * WIDTH,
+      y: Math.random() * HEIGHT,
+      r: Math.random() * 2 + 1,
+    });
+  }
+
+  function draw() {
+    clearCanvas();
+    ctx.fillStyle = "rgba(255, 255, 255, 0.6)";
+    ctx.beginPath();
+
+    for (let i = 0; i < WIDTH; i++) {
+      let p = particles[i];
+      ctx.moveTo(p.x, p.y);
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2, true);
+    }
+    ctx.fill();
+    update();
+  }
+
+  function update() {
+    for (let i = 0; i < WIDTH; i++) {
+      let p = particles[i];
+      p.y += p.r;
+      if (p.y > canvas.height) {
+        particles[i] = {
+          x: Math.random() * canvas.width,
+          y: -10,
+          r: p.r,
+        };
+      }
+    }
+  }
+  var timer = setInterval(draw, 50);
+
+  function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+})();
+
+// -------------
 import { words } from "./words.js";
 const wordText = document.querySelector(".word");
 const questionText = document.querySelector(".question"),
@@ -9,13 +63,25 @@ const timeText = document.querySelector(".time"),
   checkWord = document.querySelector(".check-word"),
   start = document.querySelector(".start"),
   hint = document.querySelector(".hint"),
+  contents = document.querySelector(".contents"),
   container = document.querySelector(".container"),
+  containerContent = document.querySelector(".container-content"),
   box = document.querySelector(".box"),
-  btnDragon = document.querySelector(".btn-dragon");
+  btnDragon = document.querySelector(".btn-dragon"),
+  btnMarry = document.querySelector(".btn_marry");
+
+btnMarry.addEventListener("click", () => {
+  contents.classList.add("none");
+  containerContent.classList.remove("none");
+});
 
 start.addEventListener("click", () => handleStart());
-checkWord.addEventListener("click", () =>
-  input.value ? handleCheck() : alert("không được spam kiểm tra đáp án")
+checkWord.addEventListener(
+  "click",
+  () => (
+    (checkWord.style.pointerEvent = "none"),
+    input.value ? handleCheck() : alert("không được spam kiểm tra đáp án")
+  )
 );
 btnDragon.addEventListener("click", () => handleDragon());
 let index = 0;
@@ -43,6 +109,7 @@ function handleCheck() {
     resultWord.innerText = "Chính xác !!";
 
     setTimeout(() => {
+      checkWord.style.pointerEvent = "none";
       appWord();
       wordText.innerText = "";
       questionText.innerText = words[index - 1].question;
