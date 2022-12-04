@@ -50,13 +50,18 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   }
 })();
-
+// (function () {
+//   const audio = new Audio();
+//   // audio.src = "./music.mp3.mp3";
+//   audio.play();
+// })();
 // -------------
 import { words } from "./words.js";
 const wordText = document.querySelector(".word");
 const questionText = document.querySelector(".question"),
   resultWord = document.querySelector(".result"),
   input = document.querySelector("input"),
+  audioMusic = document.querySelector(".audio_music"),
   form = document.querySelector("form");
 
 const timeText = document.querySelector(".time"),
@@ -65,11 +70,22 @@ const timeText = document.querySelector(".time"),
   hint = document.querySelector(".hint"),
   contents = document.querySelector(".contents"),
   container = document.querySelector(".container"),
+  inputWords = document.querySelector(".input_words"),
   containerContent = document.querySelector(".container-content"),
-  box = document.querySelector(".box"),
+  boxDragon = document.querySelector(".box_Dragon"),
   btnDragon = document.querySelector(".btn-dragon"),
   btnMarry = document.querySelector(".btn_marry");
 
+audioMusic.addEventListener("click", () => handleMusic());
+let a = false;
+const audio = new Audio();
+
+const handleMusic = () => {
+  a = !a;
+  console.log(a);
+  audio.src = "./music.mp3.mp3";
+  a ? audio.play() : audio.pause();
+};
 btnMarry.addEventListener("click", () => {
   contents.classList.add("none");
   containerContent.classList.remove("none");
@@ -89,14 +105,16 @@ let index = 0;
 function handleStart() {
   setTime();
   appWord();
+  inputWords.classList.remove("none");
   start.classList.add("none");
   checkWord.classList.remove("none");
 }
 function handleDragon() {
-  box.classList.add("none");
+  boxDragon.classList.add("none");
   form.classList.remove("none");
 }
 function handleCheck() {
+  checkWord.style.pointerEvents = "none";
   let inputValue = input.value.trim().toLowerCase().replace(/\s/g, "");
   let wordValue = words[index - 1].word
     .trim()
@@ -109,12 +127,12 @@ function handleCheck() {
     resultWord.innerText = "Chính xác !!";
 
     setTimeout(() => {
-      checkWord.style.pointerEvent = "none";
       appWord();
       wordText.innerText = "";
       questionText.innerText = words[index - 1].question;
       resultWord.innerText = "";
       input.value = "";
+      checkWord.style.pointerEvents = "visible";
     }, 3000);
   } else {
     resultWord.innerText = "Sai rồi !!";
@@ -128,7 +146,7 @@ function appWord() {
     resultWord.innerText = "";
   } else if (index === words.length) {
     container.classList.add("none");
-    box.classList.remove("none");
+    boxDragon.classList.remove("none");
   }
   index++;
 }

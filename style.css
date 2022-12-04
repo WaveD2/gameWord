@@ -16,7 +16,18 @@ body {
         rgba(232, 203, 192, 1) 100%
     );
 }
-
+.audio_music {
+    position: absolute;
+    top: 6%;
+    right: 20%;
+    padding: 10px;
+    background: linear-gradient(130deg, #cfa3a3, #ffd0ff);
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 999px;
+    color: #def2fc;
+    z-index: 999;
+}
 .social a img {
     height: 1.5em;
 }
@@ -169,13 +180,14 @@ b {
 }
 /* Dragon */
 
-.box {
+.box_Dragon {
     height: 25em;
     width: 31.25em;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+    z-index: 99;
 }
 .face {
     position: absolute;
@@ -345,6 +357,23 @@ b {
     left: 1.25em;
     transform: rotate(25deg);
     animation: wing-1 1.5s infinite;
+}
+.btn-dragon {
+    background: linear-gradient(
+        45deg,
+        hsl(0deg 28% 65% / 88%),
+        hsl(294deg 38% 60% / 89%)
+    );
+    right: 22%;
+    position: absolute;
+    bottom: -18%;
+    padding: 18px 28px;
+    /* width: 100%; */
+    border: none;
+    border-radius: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    cursor: pointer;
 }
 @keyframes wing-1 {
     50% {

@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WaveD</title>
     <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <script src="./words.js" defer type="module"></script>
     <script src="./index.js" defer type="module"></script>
   </head>
   <body>
+    <div class="audio_music">
+      <i class="fa-solid fa-music" title="Âm nhạc"></i>
+    </div>
+    <!-- Welcome -->
     <div class="contents">
       <div class="draw_container">
         <div class="canvas_container">
@@ -410,6 +417,8 @@
       </div>
       <button class="btn_marry">Ấn vào đây nè !</button>
     </div>
+
+    <!-- Work text -->
     <div class="container-content none">
       <canvas class="" id="canvas" style="position: absolute; z-index: -1">
       </canvas>
@@ -434,124 +443,125 @@
             <p style="text-align: center">Đáp án có 2 từ nha !!!</p>
             <p class="result"></p>
           </div>
-          <input type="text" placeholder="Điền câu trả lời" />
+          <input
+            type="text"
+            placeholder="Điền câu trả lời"
+            class="input_words none" />
           <div class="buttons">
             <button class="start">Bắt đầu</button>
             <button class="check-word none">Kiểm tra đáp án</button>
           </div>
         </div>
-
-        <form
-          class="gform pure-form pure-form-stacked none"
-          method="POST"
-          data-email="tungdev64@gmail.com"
-          action="https://script.google.com/macros/s/AKfycbzQbw6voRVNYBFN54-dGHELQupG9JbCySJLiMiQMs5LYSE9VPLKXZGUJPo6Eo7kmUAkWA/exec">
-          <div class="form-elements">
-            <div
-              style="
-                background: none;
-                border: 8px solid hsl(0deg 0% 50%);
-                border-radius: 30px;
-                min-width: 350px;
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-                padding: 10px;
-              ">
-              <b class="content-head" style="font-size: 2.3em">Message </b>
-              <b style="font-size: 1.3em">Tên người chơi </b>
-              <input
-                type="text"
-                name="name"
-                required=""
-                style="font-size: 1em; width: 300px" />
-
-              <b style="font-size: 1.3em">Email</b>
-              <input
-                type="email"
-                name="email"
-                required=""
-                style="font-size: 1em; width: 300px" />
-
-              <b style="font-size: 1.3em">Số điện thoại</b>
-              <input
-                type="number"
-                name="phone"
-                required=""
-                style="font-size: 1em; width: 300px" />
-
-              <b style="font-size: 1.3em">Cảm nghĩ của bạn về tôi </b>
-              <textarea
-                name="message"
-                rows="5"
-                cols="22"
-                required=""
-                style="font-size: 1.3em; width: 300px"></textarea>
-
-              <button
-                style="
-                  width: 200px;
-                  height: 27px;
-                  font-size: 1.1em;
-                  margin-top: 10px;
-                  border: 1px solid hsl(0deg 0% 20%);
-                  border-radius: 4px;
-                ">
-                Gửi
-              </button>
-            </div>
-          </div>
-
-          <!-- Thankyou_message -->
+      </div>
+      <form
+        class="gform pure-form pure-form-stacked none"
+        method="POST"
+        data-email="tungdev64@gmail.com"
+        action="https://script.google.com/macros/s/AKfycbzQbw6voRVNYBFN54-dGHELQupG9JbCySJLiMiQMs5LYSE9VPLKXZGUJPo6Eo7kmUAkWA/exec">
+        <div class="form-elements">
           <div
-            class="thankyou_message"
             style="
-              display: none;
               background: none;
-              border: 8px solid gray;
-              border-radius: 40px;
-              width: 400px;
-              padding-top: 15px;
-              padding-bottom: 40px;
-              padding-left: 20px;
-              padding-right: 20px;
-              color: #fff;
+              border: 8px solid hsl(0deg 0% 50%);
+              border-radius: 30px;
+              min-width: 350px;
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 10px;
+              padding: 10px;
             ">
-            <h1 style="text-align: center; margin: 10px">
-              Cảm ơn bạn đã cho tôi biết suy nghĩ của bạn!
-            </h1>
-            <h1 style="text-align: center">*******</h1>
-          </div>
-        </form>
+            <b class="content-head" style="font-size: 2.3em">Message </b>
+            <b style="font-size: 1.3em">Tên người chơi </b>
+            <input
+              type="text"
+              name="name"
+              required=""
+              style="font-size: 1em; width: 300px" />
 
-        <div class="box none">
-          <div class="box-text">
-            <span class="text first-text">Bạn </span>
-            <span class="text sec-text"> giỏi lắm</span>
+            <b style="font-size: 1.3em">Email</b>
+            <input
+              type="email"
+              name="email"
+              required=""
+              style="font-size: 1em; width: 300px" />
+
+            <b style="font-size: 1.3em">Số điện thoại</b>
+            <input
+              type="number"
+              name="phone"
+              required=""
+              style="font-size: 1em; width: 300px" />
+
+            <b style="font-size: 1.3em">Cảm nghĩ của bạn về tôi </b>
+            <textarea
+              name="message"
+              rows="5"
+              cols="22"
+              required=""
+              style="font-size: 1.3em; width: 300px"></textarea>
+
+            <button
+              style="
+                width: 200px;
+                height: 27px;
+                font-size: 1.1em;
+                margin-top: 10px;
+                border: 1px solid hsl(0deg 0% 20%);
+                border-radius: 4px;
+              ">
+              Gửi
+            </button>
           </div>
-          <div class="face">
-            <div class="eye"></div>
-            <div class="nostril"></div>
-            <div class="ear"></div>
-            <div class="horn horn-l"></div>
-            <div class="horn horn-r"></div>
-          </div>
-          <div class="body">
-            <div class="stomach"></div>
-          </div>
-          <div class="wing wing-l"></div>
-          <div class="wing wing-r"></div>
-          <div class="arm arm-l"></div>
-          <div class="arm arm-r"></div>
-          <div class="forearm forearm-l"></div>
-          <div class="forearm forearm-r"></div>
-          <div class="leg leg-l"></div>
-          <div class="leg leg-r"></div>
-          <div class="shadow"></div>
-          <button class="btn-dragon">Nhấn tiếp vào đây nè !!</button>
         </div>
+
+        <!-- Thankyou_message -->
+        <div
+          class="thankyou_message"
+          style="
+            display: none;
+            background: none;
+            border: 8px solid gray;
+            border-radius: 40px;
+            width: 400px;
+            padding-top: 15px;
+            padding-bottom: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: #fff;
+          ">
+          <h1 style="text-align: center; margin: 10px">
+            Cảm ơn bạn đã cho tôi biết suy nghĩ của bạn!
+          </h1>
+          <h1 style="text-align: center">*******</h1>
+        </div>
+      </form>
+      <div class="box_Dragon none">
+        <div class="box-text">
+          <span class="text first-text">Bạn </span>
+          <span class="text sec-text"> giỏi lắm</span>
+        </div>
+        <div class="face">
+          <div class="eye"></div>
+          <div class="nostril"></div>
+          <div class="ear"></div>
+          <div class="horn horn-l"></div>
+          <div class="horn horn-r"></div>
+        </div>
+        <div class="body">
+          <div class="stomach"></div>
+        </div>
+        <div class="wing wing-l"></div>
+        <div class="wing wing-r"></div>
+        <div class="arm arm-l"></div>
+        <div class="arm arm-r"></div>
+        <div class="forearm forearm-l"></div>
+        <div class="forearm forearm-r"></div>
+        <div class="leg leg-l"></div>
+        <div class="leg leg-r"></div>
+        <div class="shadow"></div>
+        <button class="btn-dragon">Nhấn tiếp vào đây nè !!</button>
       </div>
     </div>
     <script data-cfasync="false" type="text/javascript">
