@@ -518,7 +518,15 @@ function handleStart() {
 }
 function handleDragon() {
   boxDragon.classList.add("none");
-  form.classList.remove("none");
+  if (
+    valueInputLogin.value.trim().toLowerCase() ===
+    nameUser.name.trim().toLowerCase()
+  ) {
+    handleSlideTym();
+    tym.classList.remove("none");
+  } else {
+    form.classList.remove("none");
+  }
 }
 let index = 0;
 function handleCheck(check) {
@@ -622,22 +630,13 @@ function appWord(index) {
     resultWord.innerText = "";
     numberQuestion.innerText = `Câu hỏi ${index + 1}/${words.length}`;
   } else if (index === words.length) {
-    if (
-      valueInputLogin.value.trim().toLowerCase() ===
-      nameUser.name.trim().toLowerCase()
-    ) {
-      handleSlideTym();
-      container.classList.add("none");
-      tym.classList.remove("none");
-    } else {
-      container.classList.add("none");
-      nameDragon.innerText = valueInputLogin.value;
-      boxDragon.classList.remove("none");
-    }
+    container.classList.add("none");
+    nameDragon.innerText = valueInputLogin.value;
+    boxDragon.classList.remove("none");
   }
 }
 function setTime() {
-  let maxTime = 10;
+  let maxTime = 200;
   let time = setInterval(() => {
     if (maxTime > 0) {
       maxTime--;
@@ -656,7 +655,7 @@ function setTime() {
 function handleTym() {
   tym.classList.add("none");
   nameDragon.innerText = valueInputLogin.value;
-  boxDragon.classList.remove("none");
+  form.classList.remove("none");
 }
 ("use strict");
 
