@@ -450,22 +450,27 @@
           <p class="word"></p>
           <div class="details">
             <div class="text none">
-              <p class="hint">Câu 1 :</p>
               <span class="question">...............</span>
             </div>
             <p class="times">
-              Thời gian : <span class="time"><span>180</span>s</span>
+              Thời gian :
+              <span class="time"><span style="color: #f3f3f3">180</span>s</span>
             </p>
-            <p style="text-align: center">Đáp án có 2 từ nha !!!</p>
+            <p
+              class="number-question"
+              style="text-align: center; margin: 10px 0"></p>
+            <p style="text-align: center">Đáp án có 2 từ nha !</p>
             <p class="result"></p>
           </div>
           <input
             type="text"
             placeholder="Điền câu trả lời"
-            class="input_words none" />
+            class="input_words none"
+            style="text-align: center" />
           <div class="buttons">
             <button class="start">Bắt đầu</button>
             <button class="check-word none">Kiểm tra đáp án</button>
+            <button class="game-reset none">Chơi lại</button>
           </div>
         </div>
       </div>
@@ -555,8 +560,11 @@
       </form>
       <div class="box_Dragon none">
         <div class="box-text">
-          <span class="text first-text">Bạn </span>
-          <span class="text sec-text"> giỏi lắm</span>
+          <p class="text first-text">Bạn</p>
+          <span class="text sec-text">
+            giỏi quá
+            <i class="fa-solid fa-hands-clapping"></i>
+          </span>
         </div>
         <div class="face">
           <div class="eye"></div>
@@ -592,49 +600,12 @@
               style="color: red; font-size: 30px"></i>
           </span>
         </div>
-        <div
-          style="
-            font-size: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          ">
-          <span style="color: #fff">
-            Hi vọng <span style="color: red; font-weight: 600">Nhung</span> đợi
-            <span style="color: red; font-weight: 600">Tùng</span>
-            <i
-              class="fa-solid fa-face-kiss-wink-heart"
-              style="color: #fff; font-size: 20px"></i>
-          </span>
-          <p style="color: #fff">
-            <span style="color: red; font-weight: 600; font-size: 24px"
-              >Đừng</span
-            >
-            thích hay yêu đứa nào nhaaaaa
-          </p>
-        </div>
       </div>
-      <h1
-        style="
-          position: absolute;
-          color: #ee3466;
-          font-size: 45px;
-          top: 45%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        ">
+      <h1 style="position: absolute; color: #ee3466; font-size: 45px; top: 42%">
         Hồng Nhung
       </h1>
       <canvas id="pinkboard"> </canvas>
-      <button
-        class="btn-tym"
-        style="
-          position: absolute;
-          bottom: 6%;
-          right: 42%;
-          transform: translate(-50%, -50%);
-        ">
+      <button class="btn-tym" style="position: absolute; bottom: 6%">
         Ấn vào đây nè !!
       </button>
     </div>

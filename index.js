@@ -444,6 +444,7 @@ import { words, nameUser } from "./words.js";
 const wordText = document.querySelector(".word");
 const questionText = document.querySelector(".question"),
   resultWord = document.querySelector(".result"),
+  numberQuestion = document.querySelector(".number-question"),
   input = document.querySelector("input"),
   audioMusic = document.querySelector(".audio_music"),
   audioMusicIcon = document.querySelectorAll(".audio_music  i"),
@@ -453,16 +454,17 @@ const timeText = document.querySelector(".time"),
   checkWord = document.querySelector(".check-word"),
   start = document.querySelector(".start"),
   textQuestion = document.querySelector(".text"),
-  hint = document.querySelector(".hint"),
   contents = document.querySelector(".contents"),
   container = document.querySelector(".container"),
   inputWords = document.querySelector(".input_words"),
+  nameDragon = document.querySelector(".box-text .text "),
   containerContent = document.querySelector(".container-content"),
   boxDragon = document.querySelector(".box_Dragon"),
   btnDragon = document.querySelector(".btn-dragon"),
   loginUser = document.querySelector(".login_user"),
   tym = document.querySelector(".tym"),
   btnLogin = document.querySelector(".btn-login"),
+  resetGame = document.querySelector(".game-reset"),
   btnTym = document.querySelector(".btn-tym"),
   valueInputLogin = document.querySelector(".login_user input"),
   btnMarry = document.querySelector(".btn_marry");
@@ -490,57 +492,114 @@ btnMarry.addEventListener("click", () => {
 });
 
 start.addEventListener("click", () => handleStart());
-checkWord.addEventListener(
-  "click",
-  () => (
-    (checkWord.style.pointerEvent = "none"),
-    inputWords.value ? handleCheck() : alert("không được spam kiểm tra đáp án")
-  )
-);
+
 btnLogin.addEventListener("click", () => handleSubmit());
 btnDragon.addEventListener("click", () => handleDragon());
 btnTym.addEventListener("click", () => handleTym());
-let index = 0;
+resetGame.addEventListener("click", () => handleResetGame());
 // start
 function handleStart() {
   setTime();
-  appWord();
+  appWord(0);
 
   textQuestion.classList.remove("none");
   inputWords.classList.remove("none");
   start.classList.add("none");
   checkWord.classList.remove("none");
+  checkWord.addEventListener(
+    "click",
+    () => (
+      (checkWord.style.pointerEvent = "none"),
+      inputWords.value
+        ? handleCheck("start")
+        : alert("không được spam kiểm tra đáp án")
+    )
+  );
 }
 function handleDragon() {
   boxDragon.classList.add("none");
   form.classList.remove("none");
 }
-function handleCheck() {
-  checkWord.style.pointerEvents = "none";
-  let inputValue = inputWords.value.trim().toLowerCase().replace(/\s/g, "");
-  let wordValue = words[index - 1].word
-    .trim()
-    .toLocaleLowerCase()
-    .replace(/\s/g, "");
-  console.log(wordValue, inputValue);
-  if (wordValue === inputValue) {
-    console.log("đúng");
-    wordText.innerText = words[index - 1].word.trim().toUpperCase();
-    questionText.innerText = words[index - 1].question;
-    resultWord.innerText = "Chính xác !!";
+let index = 0;
+function handleCheck(check) {
+  if (check === "start") {
+    console.log("index logic", index);
+    checkWord.style.pointerEvents = "none";
+    let inputValue = inputWords.value.trim().toLowerCase().replace(/\s/g, "");
 
-    setTimeout(() => {
-      appWord();
-      wordText.innerText = "";
-      questionText.innerText = words[index - 1].question;
-      resultWord.innerText = "";
+    let wordValue = words[index].word
+      .trim()
+      .toLocaleLowerCase()
+      .replace(/\s/g, "");
+    console.log(wordValue, inputValue);
+    console.log("index logic sau +", index);
+
+    if (wordValue === inputValue) {
+      console.log("đúng");
+      console.log("index truoc", index);
+      wordText.innerText = words[index].word.trim().toUpperCase();
+      questionText.innerText = words[index].question;
+      resultWord.innerText = "Chính xác !!";
+      setTimeout(() => {
+        index++;
+        appWord(index);
+        wordText.innerText = "";
+        questionText.innerText = words[index].question;
+        resultWord.innerText = "";
+        inputWords.value = "";
+        checkWord.style.pointerEvents = "visible";
+      }, 1800);
+    } else {
+      resultWord.innerText = "Sai rồi !!";
       inputWords.value = "";
+      inputWords.focus();
       checkWord.style.pointerEvents = "visible";
-    }, 3000);
-  } else {
-    resultWord.innerText = "Sai rồi !!";
-    checkWord.style.pointerEvents = "visible";
+    }
+  } else if (check === "reset") {
+    index = 0;
+    checkWord.style.pointerEvents = "none";
+    let inputValue = inputWords.value.trim().toLowerCase().replace(/\s/g, "");
+
+    let wordValue = words[index].word
+      .trim()
+      .toLocaleLowerCase()
+      .replace(/\s/g, "");
+    console.log(wordValue, inputValue);
+
+    if (wordValue === inputValue) {
+      wordText.innerText = words[index].word.trim().toUpperCase();
+      questionText.innerText = words[index].question;
+      resultWord.innerText = "Chính xác !!";
+      setTimeout(() => {
+        index++;
+        appWord(index);
+        wordText.innerText = "";
+        questionText.innerText = words[index].question;
+        resultWord.innerText = "";
+        inputWords.value = "";
+        checkWord.style.pointerEvents = "visible";
+      }, 1800);
+    }
+    if (inputWords.value === "") {
+      resultWord.innerText = " ";
+      checkWord.style.pointerEvents = "visible";
+    } else {
+      resultWord.innerText = "Sai rồi !!";
+      inputWords.value = "";
+      inputWords.focus();
+      checkWord.style.pointerEvents = "visible";
+    }
   }
+}
+function handleResetGame() {
+  resetGame.classList.add("none");
+  checkWord.classList.remove("none");
+  appWord(0);
+  setTime();
+  handleCheck("reset");
+  inputWords.classList.remove("none");
+  inputWords.value = "";
+  inputWords.focus();
 }
 function handleSubmit() {
   if (
@@ -555,12 +614,13 @@ function handleSubmit() {
     alert("bạn nhập sai tên");
   }
 }
-function appWord() {
-  hint.innerText = `Câu ${index + 1}:`;
+function appWord(index) {
+  console.log("app ", index);
   if (index < words.length) {
     questionText.innerText = words[index].question;
     wordText.innerText = "";
     resultWord.innerText = "";
+    numberQuestion.innerText = `Câu hỏi ${index + 1}/${words.length}`;
   } else if (index === words.length) {
     if (
       valueInputLogin.value.trim().toLowerCase() ===
@@ -571,19 +631,22 @@ function appWord() {
       tym.classList.remove("none");
     } else {
       container.classList.add("none");
+      nameDragon.innerText = valueInputLogin.value;
       boxDragon.classList.remove("none");
     }
   }
-  index++;
 }
 function setTime() {
-  let maxTime = 180;
+  let maxTime = 200;
   let time = setInterval(() => {
     if (maxTime > 0) {
       maxTime--;
       timeText.innerText = maxTime + "s";
     } else {
-      resultWord.innerText = "Hết thời gian rồi ! Làm lại nhé";
+      resultWord.innerText = "Hết thời gian !";
+      inputWords.classList.add("none");
+      checkWord.classList.add("none");
+      resetGame.classList.remove("none");
       clearInterval(time);
     }
   }, 1000);
@@ -592,6 +655,7 @@ function setTime() {
 }
 function handleTym() {
   tym.classList.add("none");
+  nameDragon.innerText = valueInputLogin.value;
   boxDragon.classList.remove("none");
 }
 ("use strict");
