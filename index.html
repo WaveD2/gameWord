@@ -12,12 +12,14 @@
     <script src="./words.js" defer type="module"></script>
     <script src="./index.js" defer type="module"></script>
   </head>
+
   <body>
     <div class="audio_music">
-      <i class="fa-solid fa-music" title="Âm nhạc"></i>
+      <i class="fa-solid fa-music" title="Âm nhạc"> </i>
+      <i class="none fa-solid fa-volume-xmark" title="Tắt nhạc"></i>
     </div>
     <!-- Welcome -->
-    <div class="contents">
+    <div class="contents none">
       <div class="draw_container">
         <div class="canvas_container">
           <canvas class="canvas"></canvas>
@@ -405,7 +407,7 @@
               fill-opacity=".5"
               d="M27.4 186.428c0-83.668 67.827-151.496 151.497-151.496 40.998 0 78.186 16.292 105.461 42.748-27.79-32.613-69.155-53.305-115.357-53.305-83.67 0-151.497 67.828-151.497 151.496 0 42.671 17.647 81.214 46.036 108.749-22.532-26.446-36.14-60.726-36.14-98.192z" />
             <text
-              transform="matrix(1 0 0 1 89.8706 358)"
+              transform="matrix(.9 0 0 1.4 90.8706 358)"
               fill="#FFFFFF"
               font-family="'Mountains of Christmas' "
               font-size="25"
@@ -415,7 +417,21 @@
           </g>
         </svg>
       </div>
-      <button class="btn_marry">Ấn vào đây nè !</button>
+      <button class="btn_marry">
+        Ấn vào đây nè !
+        <i class="fa-regular fa-snowflake" style="color: #fff"></i>
+      </button>
+    </div>
+    <div class="login_user">
+      <input
+        type="text"
+        class="input-login"
+        placeholder="Nhập tên... VD: Đăng Tùng"
+        name="name" />
+      <button class="btn-login" style="display: block; margin: 20px auto">
+        Let's goooo
+        <i class="fa-solid fa-fan xoay"></i>
+      </button>
     </div>
 
     <!-- Work text -->
@@ -433,8 +449,8 @@
         <div class="content">
           <p class="word"></p>
           <div class="details">
-            <div class="text">
-              <p class="hint">Câu hỏi 1 :</p>
+            <div class="text none">
+              <p class="hint">Câu 1 :</p>
               <span class="question">...............</span>
             </div>
             <p class="times">
@@ -564,7 +580,66 @@
         <button class="btn-dragon">Nhấn tiếp vào đây nè !!</button>
       </div>
     </div>
-    <script data-cfasync="false" type="text/javascript">
+    <!-- tym -->
+    <div class="tym none">
+      <div class="tym-text">
+        <div class="">
+          <span class="text first-text">Tùng </span>
+          <span class="text inner-text">
+            Thích Nhung
+            <i
+              class="fa-solid fa-heart"
+              style="color: red; font-size: 30px"></i>
+          </span>
+        </div>
+        <div
+          style="
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          ">
+          <span style="color: #fff">
+            Hi vọng <span style="color: red; font-weight: 600">Nhung</span> đợi
+            <span style="color: red; font-weight: 600">Tùng</span>
+            <i
+              class="fa-solid fa-face-kiss-wink-heart"
+              style="color: #fff; font-size: 20px"></i>
+          </span>
+          <p style="color: #fff">
+            <span style="color: red; font-weight: 600; font-size: 24px"
+              >Đừng</span
+            >
+            thích hay yêu đứa nào nhaaaaa
+          </p>
+        </div>
+      </div>
+      <h1
+        style="
+          position: absolute;
+          color: #ee3466;
+          font-size: 45px;
+          top: 45%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        ">
+        Hồng Nhung
+      </h1>
+      <canvas id="pinkboard"> </canvas>
+      <button
+        class="btn-tym"
+        style="
+          position: absolute;
+          bottom: 6%;
+          right: 42%;
+          transform: translate(-50%, -50%);
+        ">
+        Ấn vào đây nè !!
+      </button>
+    </div>
+
+    <script data-cf="false" type="text/javascript">
       (function () {
         function validEmail(email) {
           var re =
@@ -652,6 +727,9 @@
               var thankYouMessage = form.querySelector(".thankyou_message");
               if (thankYouMessage) {
                 thankYouMessage.style.display = "block";
+                setTimeout(() => {
+                  thankYouMessage.style.display = "none";
+                }, 3000);
               }
               return;
             };

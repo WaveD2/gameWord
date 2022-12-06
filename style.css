@@ -8,8 +8,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     overflow: hidden;
+    min-height: 100vh;
     background: linear-gradient(
         135deg,
         rgba(180, 186, 214, 1) 0%,
@@ -30,6 +30,41 @@ body {
 }
 .social a img {
     height: 1.5em;
+}
+.input-login {
+    outline: none;
+    width: 300px;
+    padding: 10px 14px;
+    font-size: 20px;
+    border: 1px solid #fff;
+    text-align: center;
+}
+.xoay {
+    margin-left: 10px;
+    color: #cec5c5;
+    font-size: 26px;
+    -webkit-animation: rotate-center 2s linear infinite both;
+    animation: rotate-center 2s linear infinite both;
+}
+@-webkit-keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 .contents {
@@ -55,10 +90,16 @@ svg {
     position: absolute;
     width: 100%;
 }
-
+#pinkboard {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 .draw_container {
     width: 100%;
 }
+.btn-tym,
+.btn-login,
 .btn_marry {
     outline: none;
     padding: 8px 0;
@@ -93,7 +134,7 @@ svg {
 }
 .container {
     width: 500px;
-    background-color: #fff;
+    background: #fbeaea63;
     border-radius: 6px;
 }
 .container h2 {
@@ -165,7 +206,7 @@ svg {
     background-color: bisque;
 }
 .none {
-    display: none;
+    display: none !important;
 }
 textarea,
 input {
@@ -311,6 +352,11 @@ b {
     top: 11.81em;
     z-index: -2;
 }
+.box-text {
+    position: absolute;
+    top: -50px;
+    left: 148px;
+}
 .stomach {
     height: 8.75em;
     width: 8.75em;
@@ -366,8 +412,8 @@ b {
     );
     right: 22%;
     position: absolute;
-    bottom: -18%;
-    padding: 18px 28px;
+    bottom: -12%;
+    padding: 12px 28px;
     /* width: 100%; */
     border: none;
     border-radius: 20px;
@@ -499,20 +545,36 @@ b {
     }
 }
 /* -----------   Text     ------ */
-.box-text {
+.tym {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+ox-text {
     position: relative;
     top: -66px;
     left: 145px;
 }
+.tym-text .text,
 .box-text .text {
     position: relative;
-    color: rgb(63, 201, 189);
+    color: #b3ebe6;
     font-size: 40px;
     font-weight: 600px;
 }
+.tym-text .text {
+    right: -8%;
+    color: #ee3466;
+}
+.b .tym-text .text.first-text,
 .box-text .text.first-text {
     color: #fff;
 }
+
+.text.inner-text::before,
 .text.sec-text::before {
     content: '';
     position: absolute;
@@ -524,6 +586,7 @@ b {
     border-left: 2px solid #c9baba;
     animation: ani 3s steps(12) infinite;
 }
+
 .box button {
     position: relative;
     bottom: -360px;
