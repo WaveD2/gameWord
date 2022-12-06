@@ -406,18 +406,19 @@ b {
 .btn-dragon {
     background: linear-gradient(
         45deg,
-        hsl(0deg 28% 65% / 88%),
+        rgba(230, 200, 200, 0.88),
         hsl(294deg 38% 60% / 89%)
     );
-    right: 28%;
+    right: 40%;
     position: absolute;
-    bottom: -10%;
+    bottom: -18%;
     padding: 8px 16px;
     border: none;
     border-radius: 20px;
     font-size: 22px;
     font-weight: 600;
     cursor: pointer;
+    color: #f4f8f8;
 }
 @keyframes wing-1 {
     50% {
@@ -560,7 +561,7 @@ ox-text {
 .box-text .text {
     position: relative;
     color: #b3ebe6;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 600px;
     color: #ee3466;
 }

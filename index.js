@@ -637,7 +637,7 @@ function appWord(index) {
   }
 }
 function setTime() {
-  let maxTime = 200;
+  let maxTime = 10;
   let time = setInterval(() => {
     if (maxTime > 0) {
       maxTime--;
