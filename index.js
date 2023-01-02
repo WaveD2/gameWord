@@ -520,7 +520,8 @@ function handleDragon() {
   boxDragon.classList.add("none");
   if (
     valueInputLogin.value.trim().toLowerCase() ===
-    nameUser.name.trim().toLowerCase()
+      nameUser.name.trim().toLowerCase() ||
+    nameUser.keyName.trim().toLowerCase()
   ) {
     handleSlideTym();
     tym.classList.remove("none");
