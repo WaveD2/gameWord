@@ -52,6 +52,6 @@ export const words = [
   },
 ];
 export const nameUser = {
-  name: "Thanh Huyền",
-  keyName: "Huyền",
+  name: "Loan",
+  keyName: "Loan",
 };
